@@ -29,23 +29,21 @@ class BST {
   }
   
   contains(value){ 
-    if (this.value === value){
+    if (value === this.value){
       return true;
-    }
-    
-    if(value < this.value){
+    } else if (value < this.value){
+      // left side
      if(!this.left){
       return false; 
      } else {
-      this.left.contains(value); 
+      return this.left.contains(value); 
      }
-    }
-    
-    if(value > this.value){
+    } else if (value > this.value){
+      // right side
      if(!this.right){
       return false; 
      } else {
-      this.right.contains(value); 
+      return this.right.contains(value); 
      }
     }
   }
@@ -59,7 +57,7 @@ class BST {
     return false;
     }
     
-    if(this.left && !this.left.validateTree( min, this.value)) {
+    if(this.left && !this.left.validateTree(min, this.value)) {
     return false;
     }
     
@@ -86,5 +84,6 @@ bst.insert(105);
 bst.insert(10);
 
 
-console.log(bst.validateTree(11,105));
-//console.log(bst);
+let test = bst.contains(10);
+console.log(test);
+
